@@ -1,7 +1,7 @@
-# Batalha Naval — GPTech Games
+# Batalha Naval
 
-Sistema de Batalha Naval em modo texto e gráfico (Arcade), desenvolvido em Python 3.10+, para a
-disciplina de Programação em Python (CEFET-MG, Campus Divinópolis).
+Sistema de Batalha Naval em modo texto e gráfico, desenvolvido em Python 3.10+, para a
+disciplina de Programação em Python.
 
 ## Como executar
 
@@ -40,7 +40,7 @@ O jogo abre o menu principal descrito no enunciado:
 BatalhaNaval/
 ├── main.py                     # Loop principal, menu e regras de uma partida (modo texto)
 ├── interface_grafica_pygame.py # Interface grafica em Pygame, estilo arcade retro (bonus RNF08)
-├── assets/                     # Sprites usados pela interface Pygame (ship.png, explosion.png, agua.png)
+├── assets/                     # Sprites usados pela interface Pygame (ship.png, explosion.png)
 ├── menu.py                     # Telas de menu (principal e seleção de modo) do modo texto
 ├── tabuleiro.py                # Classe Tabuleiro (matriz 10x10, exibição normal e de ataque)
 ├── navios.py                   # Classe Navio (posições, acertos, afundamento)
@@ -59,8 +59,8 @@ BatalhaNaval/
 1. No menu principal, escolha **1. Nova partida**.
 2. Escolha o modo de jogo: **Jogador x Computador** ou **Dois Jogadores**.
 3. Posicione sua frota manualmente (informando coordenada inicial + orientação
-   H/V) ou automaticamente. A frota de cada jogador é composta por 1 navio
-   grande (4 posições) e 2 navios pequenos (2 posições cada).
+   H/V) ou automaticamente. A frota de cada jogador é composta por 2 navios
+   grandes (4 posições) e 3 navios pequenos (2 posições cada).
 4. A cada turno, informe a coordenada do ataque no formato `Letra+Número`
    (ex.: `C5`, colunas de A a J, linhas de 1 a 10).
 5. O jogo mostra `~` para água não jogada, `X` para acerto e `O` para água
