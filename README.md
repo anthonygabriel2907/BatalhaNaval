@@ -1,15 +1,11 @@
 # Batalha Naval — GPTech Games
 
-Sistema de Batalha Naval em modo texto, desenvolvido em Python 3.10+, para a
+Sistema de Batalha Naval em modo texto e gráfico (Arcade), desenvolvido em Python 3.10+, para a
 disciplina de Programação em Python (CEFET-MG, Campus Divinópolis).
 
 ## Como executar
 
-Requisitos: Python 3.10 ou superior (o projeto usa `match/case`). Nenhuma
-biblioteca externa é necessária, apenas a biblioteca padrão do Python
-(`tkinter` já vem incluído no Python padrão; em algumas distros Linux é
-preciso instalar o pacote `python3-tk` separadamente, ex.:
-`sudo apt install python3-tk`).
+Requisitos: Python 3.10 ou superior (o projeto usa `match/case`).
 
 ### Modo texto
 
@@ -19,32 +15,14 @@ python3 main.py
 
 ### Interface gráfica (bônus — RNF08)
 
-Duas versões de interface gráfica estão disponíveis; escolha uma delas
-(não é preciso rodar as duas):
+O projeto inclui uma interface gráfica estilo arcade retro, com sprites de navios e explosões em
+`assets/`. Esta versão reaproveita a exata mesma lógica do modo texto (Jogador, Computador, Tabuleiro), separando o Frontend (visual) do Backend (regras de negócio).
 
-**Versão Tkinter** (não precisa instalar nada além do Python):
-
-```bash
-python3 interface_grafica.py
-```
-
-**Versão Pygame** (estilo arcade retro, com sprites de navio/explosão em
-`assets/`):
-
+**Pygame**
 ```bash
 pip install -r requirements.txt
 python3 interface_grafica_pygame.py
 ```
-
-Ambas reaproveitam exatamente a mesma lógica de jogo do modo texto
-(`Jogador`, `Computador`, `Tabuleiro`, `estatisticas.py`, `replay.py`) —
-elas só desenham as telas e chamam essas mesmas funções nos cliques do
-usuário. Cobrem todo o escopo obrigatório: menu principal, seleção de
-modo, posicionamento manual (clique na célula + escolha de orientação
-H/V) ou automático, tabuleiro próprio e radar de ataque (que esconde os
-navios do adversário até serem atingidos), tela de fim de jogo com
-estatísticas, tela de estatísticas acumuladas e um visualizador de
-replay com navegação "Anterior/Próxima".
 
 O jogo abre o menu principal descrito no enunciado:
 
@@ -60,20 +38,20 @@ O jogo abre o menu principal descrito no enunciado:
 
 ```
 BatalhaNaval/
-├── main.py           # Loop principal, menu e regras de uma partida (modo texto)
-├── interface_grafica.py        # Interface grafica em Tkinter (bonus RNF08)
+├── main.py                     # Loop principal, menu e regras de uma partida (modo texto)
 ├── interface_grafica_pygame.py # Interface grafica em Pygame, estilo arcade retro (bonus RNF08)
-├── assets/           # Sprites usados pela interface Pygame (ship.png, explosion.png)
-├── menu.py           # Telas de menu (principal e seleção de modo) do modo texto
-├── tabuleiro.py       # Classe Tabuleiro (matriz 10x10, exibição normal e de ataque)
-├── navios.py          # Classe Navio (posições, acertos, afundamento)
-├── jogador.py         # Classe Jogador (frota, posicionamento, tentativas/acertos)
-├── computador.py       # Classe Computador (herda de Jogador, joga sozinho)
-├── estatisticas.py     # Grava e exibe estatísticas de desempenho
-├── replay.py          # Grava e reproduz o histórico da última partida
-├── utils.py           # Conversão e validação de coordenadas (ex.: C5)
-├── data/              # Arquivos gerados em tempo de execução (estatisticas.txt, replay.txt)
-└── docs/              # Documentação complementar (ex.: diário de desenvolvimento)
+├── assets/                     # Sprites usados pela interface Pygame (ship.png, explosion.png, agua.png)
+├── menu.py                     # Telas de menu (principal e seleção de modo) do modo texto
+├── tabuleiro.py                # Classe Tabuleiro (matriz 10x10, exibição normal e de ataque)
+├── navios.py                   # Classe Navio (posições, acertos, afundamento)
+├── jogador.py                  # Classe Jogador (frota, posicionamento, tentativas/acertos)
+├── computador.py               # Classe Computador (herda de Jogador, joga sozinho)
+├── estatisticas.py             # Grava e exibe estatísticas de desempenho
+├── replay.py                   # Grava e reproduz o histórico da última partida
+├── utils.py                    # Conversão e validação de coordenadas (ex.: C5)
+├── requirements.txt            # Dependências do projeto (Pygame)
+├── data/                       # Arquivos gerados em tempo de execução (estatisticas.txt, replay.txt)
+└── docs/                       # Documentação complementar (ex.: diário de desenvolvimento)
 ```
 
 ## Como jogar
@@ -116,21 +94,11 @@ BatalhaNaval/
   afunda a frota com bem menos tiros que o fácil.
 - **Frota**: 5 navios (2 grandes de 4 posições e 3 pequenos de 2),
   usando só os dois tipos exigidos em RF03.
-- **Replay em formato de vídeo (Pygame)**: o histórico salvo em
+- **Replay (Pygame)**: o histórico salvo em
   `data/replay.txt` é usado para reconstruir dois radares (um por jogador)
   com os tiros aparecendo jogada a jogada, com Play/Pausa e Anterior/Próxima.
-- **Interface gráfica separada do modo texto**: tanto `interface_grafica.py`
-  (Tkinter) quanto `interface_grafica_pygame.py` (Pygame) não duplicam
-  nenhuma regra de negócio — ambas importam as mesmas classes e funções
-  usadas no `main.py` e só cuidam da apresentação. Isso evita divergência
-  de comportamento entre as versões e mantém a lógica principal nas
-  funções originais, como pede o enunciado.
-- **Perspectiva fixa no modo Jogador x Computador (Pygame)**: durante o
-  pequeno atraso em que o computador "pensa" antes de atirar, a tela
-  continua fixada na perspectiva do jogador humano (mesmo tabuleiro e
-  radar de ataque) — isso evita que os navios do computador apareçam
-  na tela nesse intervalo, e cliques feitos nesse momento são ignorados.
+
 
 ## Autor
 
-Anthony — Engenharia de Computação, CEFET-MG Campus Divinópolis.
+Anthony Gabriel Sotto Mayor Silva.
